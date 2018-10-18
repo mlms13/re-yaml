@@ -1,21 +1,19 @@
 module LoadOptions = {
-  type schema;
-  let failsafeSchema: schema = [%bs.raw {|"FAILSAFE_SCHEMA"|}];
-  let jsonSchema: schema = [%bs.raw {|"JSON_SCHEMA"|}];
-  let coreSchema: schema = [%bs.raw {|"CORE_SCHEMA"|}];
-  let defaultSafeSchema: schema = [%bs.raw {|"DEFAULT_SAFE_SCHEMA"|}];
-  let defaultFullSchema: schema = [%bs.raw {|"DEFAULT_FULL_SCHEMA"|}];
+  module Schema = {
+    type t;
+    let failsafe: t = [%bs.raw {|"FAILSAFE_SCHEMA"|}];
+    let json: t = [%bs.raw {|"JSON_SCHEMA"|}];
+    let core: t = [%bs.raw {|"CORE_SCHEMA"|}];
+    let defaultSafe: t = [%bs.raw {|"DEFAULT_SAFE_SCHEMA"|}];
+    let defaultFull: t = [%bs.raw {|"DEFAULT_FULL_SCHEMA"|}];
+  };
 
   [@bs.deriving abstract]
   type t = {
-    [@bs.optional]
-    filename: string,
-    [@bs.optional]
-    onWarning: Js.Exn.t => unit,
-    [@bs.optional]
-    schema,
-    [@bs.optional]
-    json: bool,
+    [@bs.optional] filename: string,
+    [@bs.optional] onWarning: Js.Exn.t => unit,
+    [@bs.optional] schema: Schema.t,
+    [@bs.optional] json: bool,
   };
 };
 
