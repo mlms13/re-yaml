@@ -1,0 +1,24 @@
+{
+  "name": "re-yaml",
+  "bsc-flags": [
+    "-bs-no-version-header",
+    "-bs-super-errors"
+  ],
+  "bs-dependencies": [],
+  "bs-dev-dependencies": [],
+  "sources": [
+    {
+      "dir": "./src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "refmt": 3,
+  "suffix": ".bs.js",
+  "warnings": {
+    "error": "+8+11"
+  }
+}
